@@ -34,7 +34,6 @@ class ViewController: UIViewController {
     // BMI계산하기 - 버튼 누르면(다음화면)
     @IBAction func calculateButtonTapped(_ sender: UIButton) {
         print(#function)
-        bmiManager.calculateBMI(height: heightTextField.text!, weight: weightTextField.text!)
     }
     
     // 조건에 따라 다음화면 이동할지/말지
@@ -59,9 +58,7 @@ class ViewController: UIViewController {
             secondVC.modalPresentationStyle = .fullScreen
             
             // 다음화면으로 데이터 전달
-            secondVC.bmiNumber = bmiManager.getBMIResult()
-            secondVC.bmiColor = bmiManager.getBackgroundColor()
-            secondVC.adviceString = bmiManager.getBMIAdviceString()
+            secondVC.bmi = bmiManager.getBMI(height: heightTextField.text!, weight: weightTextField.text!)
         }
         // 다음화면으로 가기전에 텍스트필드 비우기
         heightTextField.text = ""

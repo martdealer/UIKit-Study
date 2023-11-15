@@ -5,4 +5,10 @@
 //  Created by zsm on 11/7/23.
 //
 
-import Foundation
+import UIKit
+
+struct BMI {
+    let value: Double
+    let matchColor: UIColor
+    let advice: String
+}
