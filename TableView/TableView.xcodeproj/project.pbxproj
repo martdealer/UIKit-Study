@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		6B17DDCE2B074D34003B1FB6 /* MovieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B17DDCD2B074D34003B1FB6 /* MovieCell.swift */; };
 		6B17DDD32B0754A7003B1FB6 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B17DDD22B0754A7003B1FB6 /* Movie.swift */; };
+		6B17DDD52B077BAB003B1FB6 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B17DDD42B077BAB003B1FB6 /* DataManager.swift */; };
 		6BE5970C2B0745C100B7E596 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BE5970B2B0745C100B7E596 /* AppDelegate.swift */; };
 		6BE5970E2B0745C100B7E596 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BE5970D2B0745C100B7E596 /* SceneDelegate.swift */; };
 		6BE597102B0745C100B7E596 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BE5970F2B0745C100B7E596 /* ViewController.swift */; };
@@ -20,6 +21,7 @@
 /* Begin PBXFileReference section */
 		6B17DDCD2B074D34003B1FB6 /* MovieCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCell.swift; sourceTree = "<group>"; };
 		6B17DDD22B0754A7003B1FB6 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
+		6B17DDD42B077BAB003B1FB6 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		6BE597082B0745C100B7E596 /* TableView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TableView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6BE5970B2B0745C100B7E596 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6BE5970D2B0745C100B7E596 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -45,6 +47,7 @@
 			isa = PBXGroup;
 			children = (
 				6B17DDD22B0754A7003B1FB6 /* Movie.swift */,
+				6B17DDD42B077BAB003B1FB6 /* DataManager.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -169,6 +172,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6BE597102B0745C100B7E596 /* ViewController.swift in Sources */,
+				6B17DDD52B077BAB003B1FB6 /* DataManager.swift in Sources */,
 				6BE5970C2B0745C100B7E596 /* AppDelegate.swift in Sources */,
 				6B17DDCE2B074D34003B1FB6 /* MovieCell.swift in Sources */,
 				6BE5970E2B0745C100B7E596 /* SceneDelegate.swift in Sources */,
