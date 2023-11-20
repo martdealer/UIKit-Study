@@ -91,7 +91,6 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="tableView" destination="T2c-Xq-3zx" id="QFs-Ly-ucs"/>
                         <segue destination="cdY-55-mEW" kind="push" identifier="toDetail" id="3Gc-2M-2w7"/>
                     </connections>
                 </viewController>
