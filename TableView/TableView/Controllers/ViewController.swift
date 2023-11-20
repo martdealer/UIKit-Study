@@ -21,8 +21,17 @@ class ViewController: UIViewController {
         
         tableView.delegate = self
         
+        title = "영화목록"
+        
         movieDataManager.makeMovieData()
     }
+    
+    @IBAction func addButtonTapped(_ sender: UIBarButtonItem) {
+        movieDataManager.updateMovieData()
+        tableView.reloadData()
+        
+    }
+    
 }
 
 extension ViewController: UITableViewDataSource {
