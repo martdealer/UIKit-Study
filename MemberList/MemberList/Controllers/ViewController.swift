@@ -35,6 +35,8 @@ final class ViewController: UIViewController {
     // 테이블뷰 기본설정
     func setupTableView() {
         tableView.dataSource = self
+        tableView.delegate = self
+        
         // 테이블뷰 셀 높이
         tableView.rowHeight = 60
         
@@ -81,10 +83,20 @@ extension ViewController: UITableViewDataSource {
         cell.member = memberListManager[indexPath.row]
         cell.selectionStyle = .none
         
-
-        
         return cell
     }
+}
+
+extension ViewController: UITableViewDelegate {
     
-    
+    // 여기에 다음 화면으로 넘어갈 코드 구현
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let detailVC = DetailViewController()
+        
+        let array = memberListManager.getMemberList()
+        detailVC.member = array[indexPath.row]
+        
+        navigationController?.pushViewController(detailVC, animated: true)
+    }
 }
