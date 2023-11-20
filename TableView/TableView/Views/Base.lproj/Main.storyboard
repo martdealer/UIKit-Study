@@ -85,11 +85,68 @@
                     </view>
                     <connections>
                         <outlet property="tableView" destination="T2c-Xq-3zx" id="QFs-Ly-ucs"/>
+                        <segue destination="cdY-55-mEW" kind="presentation" identifier="toDetail" id="3Gc-2M-2w7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="106" y="-27"/>
+        </scene>
+        <!--Detail View Controller-->
+        <scene sceneID="5hg-Sp-UxQ">
+            <objects>
+                <viewController id="cdY-55-mEW" customClass="DetailViewController" customModule="TableView" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="e1L-aM-fOn">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="NAs-ba-STc">
+                                <rect key="frame" x="76.666666666666686" y="100" width="240" height="400"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JKe-I4-LTj">
+                                        <rect key="frame" x="0.0" y="0.0" width="240" height="240"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="240" id="2a3-ms-xpG"/>
+                                            <constraint firstAttribute="height" constant="240" id="M26-U5-5Bh"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WTH-hn-QlY">
+                                        <rect key="frame" x="0.0" y="255" width="240" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="3IZ-UP-DBV"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mXc-52-lrC">
+                                        <rect key="frame" x="0.0" y="300" width="240" height="100"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="100" id="KmP-ty-d78"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="OSe-Gs-pem"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="NAs-ba-STc" firstAttribute="top" secondItem="OSe-Gs-pem" secondAttribute="top" constant="100" id="Puv-bp-LNP"/>
+                            <constraint firstItem="NAs-ba-STc" firstAttribute="centerX" secondItem="e1L-aM-fOn" secondAttribute="centerX" id="ZAW-5x-VVo"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="descriptionLabel" destination="mXc-52-lrC" id="tES-Gk-fWe"/>
+                        <outlet property="mainImageView" destination="JKe-I4-LTj" id="P8H-xw-QpA"/>
+                        <outlet property="movieNameLabel" destination="WTH-hn-QlY" id="XI5-0G-U8E"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dXc-4t-Ip6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="999.23664122137404" y="-29.577464788732396"/>
         </scene>
     </scenes>
     <resources>
