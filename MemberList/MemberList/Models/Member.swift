@@ -16,7 +16,7 @@ struct Member {
     }()
     
     // 총 멤버수. 모든 인스턴스가 같은 값을 가지고 공유해야 하므로 타입변수static 선언
-    static var memberNumber: Int = 0
+    static var memberNumbers: Int = 0
     
     let memberId: Int
     var name: String?
@@ -26,13 +26,13 @@ struct Member {
     
     init(name: String?, age: Int?, phone: String?, address: String?) {
         
-        self.memberId = Member.memberNumber == 0 ? 0 : Member.memberNumber
+        self.memberId = Member.memberNumbers
         
         self.name = name
         self.age = age
         self.phone = phone
         self.address = address
         
-        Member.memberNumber += 1
+        Member.memberNumbers += 1
     }
 }
