@@ -11,6 +11,10 @@ final class ViewController: UIViewController {
     
     private let tableView = UITableView()
     var memberListManager = MemberListManager()
+    lazy var plusButton: UIBarButtonItem = {
+        let button = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(plusButtonTapped))
+        return button
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,6 +23,13 @@ final class ViewController: UIViewController {
         setupTableView()
         setupTableViewConstraints()
         setupDatas()
+    }
+    
+    // 업데이트된 정보를 표시하기 위해
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        tableView.reloadData()
     }
     
     // 내비게이션 바 설정
@@ -30,6 +41,9 @@ final class ViewController: UIViewController {
         navigationController?.navigationBar.standardAppearance = appearance
         navigationController?.navigationBar.compactAppearance = appearance
         navigationController?.navigationBar.scrollEdgeAppearance = appearance
+        
+        // 내비게이션바의 오른쪽 버튼 할당
+        self.navigationItem.rightBarButtonItem = self.plusButton
     }
     
     // 테이블뷰 기본설정
@@ -62,6 +76,20 @@ final class ViewController: UIViewController {
     func setupDatas() {
         memberListManager.makeMembersListData()
     }
+    
+    // 멤버를 추가하기 위한 다음 화면으로 이동
+    @objc func plusButtonTapped() {
+        // 다음화면으로 이동 (멤버는 전달하지 않음)
+        let detailVC = DetailViewController()
+        
+        // 다음 화면의 대리자 설정 (다음 화면의 대리자는 지금 현재의 뷰컨트롤러)
+        //detailVC.delegate = self
+        
+        // 화면이동
+        navigationController?.pushViewController(detailVC, animated: true)
+        //show(detailVC, sender: nil)
+    }
+
 
 }
 

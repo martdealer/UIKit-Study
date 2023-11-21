@@ -7,9 +7,10 @@
 
 import UIKit
 
-class MyTableViewCell: UITableViewCell {
-    
-    // 멤버라는 변수를 관찰하다가, 변할 때 설정 가능
+final class MyTableViewCell: UITableViewCell {
+
+    //MARK: - 멤버 저장속성 구현
+    // 멤버가 변할때마다 자동으로 업데이트 되도록 구현 didSet(속성 감시자) ⭐️
     var member: Member? {
         didSet {
             guard var member = member else { return }
@@ -18,7 +19,9 @@ class MyTableViewCell: UITableViewCell {
             addressLabel.text = member.address
         }
     }
-
+    
+    //MARK: - UI구현
+    
     let mainImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -31,10 +34,11 @@ class MyTableViewCell: UITableViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-    
+
     let addressLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 10)
+        label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -42,54 +46,44 @@ class MyTableViewCell: UITableViewCell {
     let stackView: UIStackView = {
         let sv = UIStackView()
         sv.axis = .vertical
-        sv.distribution = .fill
+        sv.distribution  = .fill
         sv.alignment = .fill
         sv.spacing = 5
         sv.translatesAutoresizingMaskIntoConstraints = false
         return sv
     }()
     
-    // 코드로 테이블뷰 셀을 찍어낼 때 설정하는 생성자
+    //MARK: 생성자 셋팅
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: .default, reuseIdentifier: reuseIdentifier)
         setupStackView()
+        
+        // 셀 오토레이아웃 일반적으로 생성자에서 잡으면 됨 ⭐️⭐️⭐️
+        setConstraints()
     }
     
     func setupStackView() {
-        self.addSubview(mainImageView)
-        // 셀 위에 스택뷰 올리기
-        self.addSubview(stackView)
-        // 스택뷰 위에 요소 올리기
+
+        self.contentView.addSubview(mainImageView)
+        self.contentView.addSubview(stackView)
+        
+        // 스택뷰 위에 뷰들 올리기
         stackView.addArrangedSubview(memberNameLabel)
         stackView.addArrangedSubview(addressLabel)
     }
     
-    // 상위의 지정생성자를 재정의한 경우 상위의 필수생성자도 재정의해야함
-    // 지정생성자 재정의한 경우 새로운 저장속성이 추가된 상황일 수 있기 때문에 필수생성자가 자동으로 구현되지 않게 됨
-    // 애플의 내부 메커니즘을 재정의한 것이기 때문에 어떤 역할을 하는지 세부적인 내용까지 알 수는 없음
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-//    스토리보드 사용시에만 필요
-//    override func awakeFromNib() {
-//        super.awakeFromNib()
-//        // Initialization code
+    //MARK: - 오토레이아웃 셋팅
+    // (오토레이아웃 변하지 않는 경우) 일반적으로 생성자에서 잡으면 됨 ⭐️⭐️⭐️
+//    override func updateConstraints() {
+//        setConstraints()
+//        super.updateConstraints()
 //    }
-//
-//    override func setSelected(_ selected: Bool, animated: Bool) {
-//        super.setSelected(selected, animated: animated)
-//
-//        // Configure the view for the selected state
-//    }
-
-    // 오토레이아웃을 세팅하는 정확한 시점 ( Drawing Cycle )
-    override func updateConstraints() {
-        setConstraints()
-        super.updateConstraints()
-    }
     
-    // 이미지뷰의 크기를 이용해 원을 그리는 로직이므로 이미지뷰의 크기가 설정된 이후여야 함 ( Drawing Cycle )
     override func layoutSubviews() {
         super.layoutSubviews()
         self.mainImageView.clipsToBounds = true
@@ -100,8 +94,11 @@ class MyTableViewCell: UITableViewCell {
         NSLayoutConstraint.activate([
             mainImageView.heightAnchor.constraint(equalToConstant: 40),
             mainImageView.widthAnchor.constraint(equalToConstant: 40),
-            mainImageView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 40),
-            mainImageView.centerYAnchor.constraint(equalTo: self.centerYAnchor)
+            
+            // self.leadingAnchor로 잡는 것보다 self.contentView.leadingAnchor로 잡는게 더 정확함 ⭐️
+            // (cell은 기본뷰로 contentView를 가지고 있기 때문)
+            mainImageView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 10),
+            mainImageView.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor)
         ])
         
         NSLayoutConstraint.activate([
@@ -110,10 +107,12 @@ class MyTableViewCell: UITableViewCell {
         
         NSLayoutConstraint.activate([
             stackView.leadingAnchor.constraint(equalTo: mainImageView.trailingAnchor, constant: 20),
-            stackView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-            stackView.topAnchor.constraint(equalTo: self.mainImageView.topAnchor, constant: 20),
+            
+            // self.trailingAnchor로 잡는 것보다 self.contentView.trailingAnchor로 잡는게 더 정확함 ⭐️
+            // (cell은 기본뷰로 contentView를 가지고 있기 때문)
+            stackView.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor),
+            stackView.topAnchor.constraint(equalTo: self.mainImageView.topAnchor),
             stackView.bottomAnchor.constraint(equalTo: self.mainImageView.bottomAnchor)
         ])
     }
-    
 }
