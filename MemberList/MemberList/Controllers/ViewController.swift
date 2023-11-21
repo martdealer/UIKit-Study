@@ -83,7 +83,7 @@ final class ViewController: UIViewController {
         let detailVC = DetailViewController()
         
         // 다음 화면의 대리자 설정 (다음 화면의 대리자는 지금 현재의 뷰컨트롤러)
-        //detailVC.delegate = self
+        detailVC.delegate = self
         
         // 화면이동
         navigationController?.pushViewController(detailVC, animated: true)
