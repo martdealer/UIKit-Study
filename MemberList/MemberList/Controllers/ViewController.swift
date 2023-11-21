@@ -25,12 +25,12 @@ final class ViewController: UIViewController {
         setupDatas()
     }
     
-    // 업데이트된 정보를 표시하기 위해
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        tableView.reloadData()
-    }
+//    // 업데이트된 정보를 표시하기 위해
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(animated)
+//        
+//        tableView.reloadData()
+//    }
     
     // 내비게이션 바 설정
     func setupNaviBar() {
@@ -121,10 +121,25 @@ extension ViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         let detailVC = DetailViewController()
+        detailVC.delegate = self
         
         let array = memberListManager.getMemberList()
         detailVC.member = array[indexPath.row]
         
         navigationController?.pushViewController(detailVC, animated: true)
     }
+}
+
+extension ViewController: MemberDelegate {
+    func addNewMember(_ member: Member) {
+        memberListManager.makeNewMember(member)
+        tableView.reloadData()
+    }
+    
+    func update(index: Int, _ member: Member) {
+        memberListManager.updateMemberInfo(index: index, member)
+        tableView.reloadData()
+    }
+    
+    
 }

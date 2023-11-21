@@ -7,6 +7,12 @@
 
 import UIKit
 
+// weak 키워드 사용을 위해 AnyObject 상속
+protocol MemberDelegate: AnyObject {
+    func addNewMember(_ member: Member)
+    func update(index: Int, _ member: Member)
+}
+
 struct Member {
     
     // 이미지가 없다면 메모리 낭비하지 않도록 lazy 선언
