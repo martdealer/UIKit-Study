@@ -32,6 +32,9 @@ final class NetworkManager {
             completion(result)
         }
         
+       // performRequest(with: urlString, completion: completion)
+
+        
     }
     
     // 실제 Request하는 함수 (비동기적 실행 ===> 클로저 방식으로 끝난 시점을 전달 받도록 설계)

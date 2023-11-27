@@ -45,6 +45,7 @@ final class MusicCell: UITableViewCell {
         
             guard let data = try? Data(contentsOf: url) else { return }
             // 오래걸리는 작업이 일어나고 있는 동안에 url이 바뀔 가능성 제거 ⭐️⭐️⭐️
+            // 재사용된 셀이 최신화되지 않고 보일 가능성 제거하기 위해 확인
             guard urlString == url.absoluteString else { return }
             
             DispatchQueue.main.async {
